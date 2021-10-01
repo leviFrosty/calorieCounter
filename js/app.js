@@ -11,22 +11,35 @@
 const calorieForm = document.querySelector(".calorie-form");
 const calorieInput = calorieForm.querySelector("input");
 
-const CALORIECOUNTS_KEY = "calorieCounts";
+const CALORIECOUNTS_KEY = "calorieItems";
 
 // Adds calorieCount array to local storage if  not present
 if (localStorage.getItem(CALORIECOUNTS_KEY) === null) {
-  const calorieItems = JSON.stringify([
-    {
-      date: new Date().getDay(),
-      calories: "",
-    },
-  ]);
-  localStorage.setItem(CALORIECOUNTS_KEY, calorieItems);
+  localStorage.setItem(CALORIECOUNTS_KEY, "[]");
+}
+
+const calories = localStorage.getItem(CALORIECOUNTS_KEY);
+
+function createCalorieObj(calories) {
+  return {
+    date: new Date().getDay(),
+    calories: calories !== undefined ? `${calories}` : "",
+  };
+}
+
+function setCalories(calories) {
+  const savedCalorieItems = localStorage.getItem(CALORIECOUNTS_KEY);
+  let destringedArray = JSON.parse(savedCalorieItems);
+  const newCalorieItem = createCalorieObj(calories);
+  destringedArray.push(newCalorieItem);
+  const newStringifiedItems = JSON.stringify(destringedArray);
+  localStorage.setItem(CALORIECOUNTS_KEY, newStringifiedItems);
 }
 
 function onSubmit(event) {
   event.preventDefault();
-  console.log(calorieInput.value);
+  const input = calorieInput.value;
+  setCalories(input);
 }
 
 calorieForm.addEventListener("submit", onSubmit);
