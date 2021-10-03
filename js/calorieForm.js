@@ -13,6 +13,7 @@ const CALORIEITEM_BUTTON_CLASS = "calorie-item_btn";
 const CALORIEITEM_CLASS = "calorie-item";
 const calorieForm = document.querySelector(".calorie-form");
 const calorieInput = calorieForm.querySelector("input");
+const calorieItemBtns = document.querySelectorAll("button");
 
 // Adds calorieCount array to local storage if  not present
 if (localStorage.getItem(CALORIECOUNTS_KEY) === null) {
@@ -37,25 +38,35 @@ function setCalories(calories) {
   localStorage.setItem(CALORIECOUNTS_KEY, newStringifiedItems);
 }
 
-function printAllCalories() {
+function deleteCalorie(obj) {
+  const calorieItemsList = JSON.parse(localStorage.getItem(CALORIECOUNTS_KEY));
+  const buttonId = obj.target.id;
+  console.dir(buttonId);
+  const newList = calorieItemsList.filter((item) => item.id !== buttonId);
+  const newListStringified = JSON.stringify(newList);
+  localStorage.setItem(CALORIECOUNTS_KEY, newListStringified);
+  paintAllCalories();
+}
+
+function paintAllCalories() {
   const calorieItemsList = JSON.parse(localStorage.getItem(CALORIECOUNTS_KEY));
   const ul = document.querySelector(".calorie-entries");
   ul.replaceChildren();
   calorieItemsList.map((item) => {
-    // creates lis
     const li = document.createElement("li");
-    let nodeText = document.createTextNode(`${item.calories}`);
-    li.appendChild(nodeText);
     li.id = item.id;
-    li.classList.add(CALORIEITEM_CLASS);
-    ul.appendChild(li);
-    // creates del buttons
+    const span = document.createElement("span");
+    span.innerText = `${item.calories}`;
+    span.id = item.id;
+    span.classList.add(CALORIEITEM_CLASS);
     const btn = document.createElement("button");
+    btn.innerText = "x";
     btn.id = item.id;
     btn.classList.add(CALORIEITEM_BUTTON_CLASS);
-    let btnText = document.createTextNode("X");
-    btn.appendChild(btnText);
+    btn.addEventListener("click", deleteCalorie);
+    li.appendChild(span);
     li.appendChild(btn);
+    ul.appendChild(li);
   });
 }
 
@@ -63,8 +74,13 @@ function onSubmit(event) {
   event.preventDefault();
   const input = calorieInput.value;
   setCalories(input);
-  printAllCalories();
+  paintAllCalories();
 }
 
-printAllCalories();
+paintAllCalories();
 calorieForm.addEventListener("submit", onSubmit);
+
+function getButtons() {
+  console.log(calorieItemBtns);
+  console.log(calorieItemBtns.forEach((btn) => console.log(btn)));
+}

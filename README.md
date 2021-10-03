@@ -1,3 +1,3 @@
 Calories! Count em.
 
-Vanilla JS Simple Calorie Counter
+Vanilla JS Simple Calorie Counter.

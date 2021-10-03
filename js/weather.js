@@ -18,14 +18,14 @@ function onGeoOk(position) {
     .then((responseData) => {
       const weatherContainer = document.querySelector(".weather-container");
       const weatherSpan = weatherContainer.querySelector("span");
-      const temperature = responseData.main.temp;
+      const temperature = parseInt(responseData.main.temp);
       weatherSpan.innerText = temperature;
     })
     .catch((error) => console.log(error));
 }
 
 function onGeoError() {
-  alert("Can't find you, weather unsuccefully loaded.");
+  alert("Can't find you, please enable geolocation.");
 }
 
 const userLocation = navigator.geolocation.getCurrentPosition(
