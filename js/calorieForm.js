@@ -53,6 +53,8 @@ function printAllCalories() {
     const btn = document.createElement("button");
     btn.id = item.id;
     btn.classList.add(CALORIEITEM_BUTTON_CLASS);
+    let btnText = document.createTextNode("X");
+    btn.appendChild(btnText);
     li.appendChild(btn);
   });
 }
