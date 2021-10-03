@@ -13,12 +13,13 @@ function onGeoOk(position) {
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      response.json().then((data) => {
-        const weatherContainer = document.querySelector(".weather-container");
-        const weatherSpan = weatherContainer.querySelector("span");
-        const temperature = data.main.temp;
-        weatherSpan.innerText = temperature;
-      });
+      return response.json();
+    })
+    .then((responseData) => {
+      const weatherContainer = document.querySelector(".weather-container");
+      const weatherSpan = weatherContainer.querySelector("span");
+      const temperature = responseData.main.temp;
+      weatherSpan.innerText = temperature;
     })
     .catch((error) => console.log(error));
 }
