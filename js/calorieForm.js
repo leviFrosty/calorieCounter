@@ -17,6 +17,15 @@ if (localStorage.getItem(CALORIECOUNTS_KEY) === null) {
   localStorage.setItem(CALORIECOUNTS_KEY, "[]");
 }
 
+function handleInputContainer() {
+  const inputContainer = document.getElementById("inputForm-container");
+  if (localStorage.getItem(MAXCALORIE_KEY) === "") {
+    inputContainer.className = "hidden";
+  } else {
+    inputContainer.className = "";
+  }
+}
+
 function createCalorieObj(calories) {
   const id = Math.random().toString(16).slice(2);
   return {
@@ -43,6 +52,7 @@ function deleteCalorie(obj) {
   localStorage.setItem(CALORIECOUNTS_KEY, newListStringified);
   paintAllCalories();
   paintsCalorieLimitBox();
+  handleInputContainer();
 }
 
 function paintAllCalories() {
@@ -73,6 +83,7 @@ function onSubmit(event) {
   setCalories(input);
   paintAllCalories();
   paintsCalorieLimitBox();
+  handleInputContainer();
 }
 
 function getButtons() {
@@ -81,4 +92,5 @@ function getButtons() {
 }
 
 paintAllCalories();
+handleInputContainer();
 calorieForm.addEventListener("submit", onSubmit);

@@ -1,4 +1,5 @@
 const API_KEY = "3e8bfa331a606b8a0cd7f95bbfc5714d";
+// Is rate limited, so I don't care if you take my key.
 
 function onGeoOk(position) {
   const lat = position.coords.latitude;

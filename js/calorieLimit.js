@@ -25,6 +25,7 @@ function onLimitSubmit(event) {
   localStorage.setItem(MAXCALORIE_KEY, limit);
   paintsCalorieLimitBox();
   handleCaloriePrompt();
+  handleInputContainer();
 }
 
 function setSavedTotalCals() {
@@ -59,6 +60,7 @@ function resetCalLimit() {
   localStorage.setItem(MAXCALORIE_KEY, "");
   paintsCalorieLimitBox();
   handleCaloriePrompt();
+  handleInputContainer();
 }
 
 function paintsCalorieLimitBox() {
