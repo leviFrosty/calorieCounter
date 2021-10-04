@@ -9,3 +9,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.currentCal {
+  color: crimson;
+}
+
+div .under {
+  color: limegreen;
+}
+.over {
+  color: crimson;
+}
+
+div .warning {
+  color: orange;
+}

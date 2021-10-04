@@ -8,9 +8,6 @@
 // Add happy animation for previous day's calorie defecit
 //  dark mode?
 
-const CALORIECOUNTS_KEY = "calorieItems";
-const CALORIEITEM_BUTTON_CLASS = "calorie-item_btn";
-const CALORIEITEM_CLASS = "calorie-item";
 const calorieForm = document.querySelector(".calorie-form");
 const calorieInput = calorieForm.querySelector("input");
 const calorieItemBtns = document.querySelectorAll("button");
@@ -41,11 +38,11 @@ function setCalories(calories) {
 function deleteCalorie(obj) {
   const calorieItemsList = JSON.parse(localStorage.getItem(CALORIECOUNTS_KEY));
   const buttonId = obj.target.id;
-  console.dir(buttonId);
   const newList = calorieItemsList.filter((item) => item.id !== buttonId);
   const newListStringified = JSON.stringify(newList);
   localStorage.setItem(CALORIECOUNTS_KEY, newListStringified);
   paintAllCalories();
+  paintsCalorieLimitBox();
 }
 
 function paintAllCalories() {
@@ -75,12 +72,13 @@ function onSubmit(event) {
   const input = calorieInput.value;
   setCalories(input);
   paintAllCalories();
+  paintsCalorieLimitBox();
 }
-
-paintAllCalories();
-calorieForm.addEventListener("submit", onSubmit);
 
 function getButtons() {
   console.log(calorieItemBtns);
   console.log(calorieItemBtns.forEach((btn) => console.log(btn)));
 }
+
+paintAllCalories();
+calorieForm.addEventListener("submit", onSubmit);
