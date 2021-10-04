@@ -81,6 +81,7 @@ function onSubmit(event) {
   event.preventDefault();
   const input = calorieInput.value;
   setCalories(input);
+  calorieInput.value = "";
   paintAllCalories();
   paintsCalorieLimitBox();
   handleInputContainer();
