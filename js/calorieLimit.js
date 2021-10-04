@@ -1,4 +1,4 @@
-const calMaxForm = document.querySelector(".desiredCalories-form");
+const calMaxForm = document.getElementById("desiredCalories-form");
 const calMaxInput = document.querySelector("input");
 const maxCalDiv = document.querySelector(".maxCalCalculator");
 
@@ -8,6 +8,16 @@ if (localStorage.getItem(MAXCALORIE_KEY) === null) {
 }
 if (localStorage.getItem(CURRENTCALTOTAL_KEY) === null) {
   localStorage.setItem(CURRENTCALTOTAL_KEY, "");
+}
+
+// Hides input box
+handleCaloriePrompt();
+function handleCaloriePrompt() {
+  const savedMaxCal = localStorage.getItem(MAXCALORIE_KEY);
+  calMaxForm.className = "hidden";
+  if (savedMaxCal === "") {
+    calMaxForm.className = "";
+  }
 }
 
 function onLimitSubmit(event) {
