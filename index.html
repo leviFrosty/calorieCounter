@@ -7,46 +7,61 @@
     <title>Calories!</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="./js/variables.js"></script>
+    <script src="https://kit.fontawesome.com/f4f9d99fba.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1>Calories! Count em.</h1>
-    <form id="desiredCalories-form">
-      <label for="calLimit">Enter daily calorie limit</label>
-      <input
-        id="calLimit"
-        placeholder="2200"
-        required
-        type="number"
-        min="500"
-        max="99999"
-        type="text"
-        class="desiredCalories-form_input"
-      />
-      <a href="https://www.myplate.gov/myplate-plan" target="_blank"
-        >Not sure?</a
-      >
-    </form>
-    <div id="inputForm-container">
-      <form action="" class="calorie-form">
-        <input
-          required
-          type="number"
-          min="1"
-          max="9999"
-          type="text"
-          class="calorie-form_input"
-          placeholder="Enter calories"
-        />
-        <button class="calorie-form_button">+</button>
-      </form>
-      <ul class="calorie-entries"></ul>
-      <div class="grid-container maxCalCalculator">
-        <div class=""></div>
-        <div class=""></div>
+    <div class="container">
+      <h1 class="title">Calories! <span>count em.</span></h1>
+      <div id="desiredCalories-container">
+        <form id="desiredCalories-form">
+          <div>
+            <label class="fontSize-normal desiredCalories-form_label" for="calLimit"
+              >Enter daily calorie limit:</label
+            >
+          </div>
+          <div>
+            <input
+              id="calLimit"
+              placeholder="2200"
+              required
+              type="number"
+              min="500"
+              max="99999"
+              type="text"
+              class="desiredCalories-form_input fontSize-normal"
+            />
+          </div>
+          <a href="https://www.myplate.gov/myplate-plan" target="_blank" class="notSure-link"
+            >Not sure?</a
+          >
+        </form>
       </div>
-    </div>
-    <div class="weather-container">
-      <span></span>
+      <div id="inputForm-container">
+        <div class="inputForm-FlexContainer">
+        <div class="calorie-form-container">
+        <form action="" class="calorie-form">
+            <input
+              required
+              type="number"
+              min="1"
+              max="9999"
+              type="text"
+              class="calorie-form_input"
+              placeholder="enter calories"
+            />
+            <button class="calorie-form_button"><i class="fas fa-plus"></i></button>
+          </div>
+        </form>
+        <ul class="calorie-entries"></ul>
+        <div class="grid-container maxCalCalculator">
+          <div class=""></div>
+          <div class=""></div>
+        </div>
+        </div>
+      </div>
+      <div class="weather-container">
+        <span></span>
+      </div>
     </div>
   </body>
   <script src="js/calorieForm.js"></script>

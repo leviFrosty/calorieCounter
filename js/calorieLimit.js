@@ -13,9 +13,12 @@ if (localStorage.getItem(CURRENTCALTOTAL_KEY) === null) {
 handleCaloriePrompt();
 function handleCaloriePrompt() {
   const savedMaxCal = localStorage.getItem(MAXCALORIE_KEY);
-  calMaxForm.className = "hidden";
+  const caloriePromptContainer = document.getElementById(
+    "desiredCalories-container"
+  );
+  caloriePromptContainer.className = "hidden";
   if (savedMaxCal === "") {
-    calMaxForm.className = "";
+    caloriePromptContainer.className = "";
   }
 }
 

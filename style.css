@@ -1,17 +1,42 @@
 * {
   margin: 0;
   padding: 0;
+  font-size: 10pt;
+  --textColor: #f2ffff;
+  --boxBackGroundColor: #36393f;
+  --backgroundColor: #282c34;
+  --inputBox: #40444b;
+  --deleteColor: #bcbdc0;
+  --delHover: #d0d3d6;
+  --accentColor: #5865f2;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display: flex;
-  flex-direction: column;
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 .hidden {
   display: none;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 div .under {
@@ -23,4 +48,274 @@ div .under {
 
 div .warning {
   color: orange;
+}
+
+.title {
+  font-size: 3rem;
+  margin: 2rem 0 0 0;
+  display: flex;
+}
+
+.title span {
+  font-size: 2.2rem;
+  padding: 0.7rem 0 0 0.2rem;
+  font-style: italic;
+  color: var(--accentColor);
+}
+
+.fontSize-normal {
+  font-size: 1.6rem;
+}
+.desiredCalories-form_label {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 1040px) {
+  .title {
+    font-size: 4.25rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1040px) {
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+#desiredCalories-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.weather-container {
+  position: absolute;
+  right: 5vw;
+  bottom: 5vh;
+}
+
+#desiredCalories-container {
+  position: absolute;
+  top: 40%;
+  padding: 2rem;
+  background-color: var(--boxBackGroundColor);
+  border-radius: 5px;
+}
+
+#inputForm-container {
+  border-radius: 10px;
+  background-color: var(--boxBackGroundColor);
+  padding: 2rem;
+  margin: 2rem;
+  width: 70vw;
+  height: 70vh;
+  max-width: 768px;
+}
+
+.inputForm-FlexContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calorie-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.calorie-form {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 1rem 0 0.5rem 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 1040px) {
+  .calorie-form {
+    margin: 1.5rem 0 2.5rem 0;
+  }
+}
+
+.desiredCalories-form_input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  padding: 0.25rem 0.5rem;
+  margin: 1rem 0 0.5rem 0;
+  border-radius: 10px;
+  background-color: var(--inputBox);
+  color: var(--textColor);
+  transition: outline 2s;
+}
+.desiredCalories-form_input:focus,
+.desiredCalories-form_input:hover {
+  outline: solid 1px var(--textColor);
+}
+
+.desiredCalories-form_input input::-webkit-input-placeholder {
+  color: var(--textColor);
+  opacity: 0.5;
+}
+.desiredCalories-form_input::-webkit-outer-spin-button,
+.desiredCalories-form_input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.notSure-link {
+  color: var(--deleteColor);
+}
+.notSure-link:hover {
+  color: var(--textColor);
+}
+.calorie-form input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  padding: 0 0 0 0.5rem;
+  height: 3rem;
+  border-radius: 10px;
+  outline: var(--textColor);
+  background-color: var(--inputBox);
+  width: 80%;
+}
+@media screen and (min-width: 1040px) {
+  .calorie-form input {
+    padding: 0 0 0 1.5rem;
+  }
+}
+
+.calorie-form input::-webkit-input-placeholder {
+  color: var(--textColor);
+  opacity: 0.5;
+}
+
+.calorie-form input::-webkit-outer-spin-button,
+.calorie-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.calorie-form input,
+select textarea {
+  color: var(--textColor);
+}
+
+.calorie-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--deleteColor);
+  color: var(--boxBackGroundColor);
+  padding: 0 1rem 0 1rem;
+  font-size: 2rem;
+  margin: 0 0 0 1rem;
+  width: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.calorie-form button:hover {
+  background-color: var(--delHover);
+}
+
+.calorie-form_input {
+  font-size: 1.6rem;
+}
+.calorie-entries {
+  width: 100%;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calorie-entries li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.calorie-entries li span {
+  margin-left: 20%;
+  font-size: 2rem;
+}
+.calorie-entries li {
+  list-style: none;
+}
+
+.calorie-entries li button {
+  background-color: var(--deleteColor);
+  color: var(--boxBackGroundColor);
+  padding: 0 1rem 0 1rem;
+  font-size: 1.5rem;
+  margin: 0 0 0 1rem;
+  width: auto;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  margin-right: 20%;
+  padding: 0.25rem 0.5rem;
+}
+.calorie-entries li button:hover {
+  background-color: var(--delHover);
+}
+
+.maxCalCalculator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: row;
+}
+
+@media screen and (min-width: 1040px) {
+  .maxCalCalculator {
+    margin-right: 10vw;
+  }
+}
+
+.maxCalCalculator div:first-child {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.maxCalCalculator div:last-child {
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 1040px) {
+  .maxCalCalculator div:first-child {
+    font-size: 3rem;
+  }
+  .maxCalCalculator div:last-child {
+    font-size: 2.3rem;
+  }
+  .maxCalCalculator div:last-child button {
+    font-size: 1.4rem;
+  }
+}
+
+.maxCalCalculator div:last-child::before {
+  content: "/";
+}
+
+.maxCalCalculator div:last-child button {
+  margin-left: 1rem;
+  text-transform: lowercase;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--boxBackGroundColor);
+  background-color: var(--inputBox);
+  border-radius: 5px;
+  padding: 0.25rem;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+}
+.maxCalCalculator div:last-child button:hover {
+  background-color: var(--deleteColor);
 }
