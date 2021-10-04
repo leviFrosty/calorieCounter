@@ -10,7 +10,6 @@ if (localStorage.getItem(CURRENTCALTOTAL_KEY) === null) {
   localStorage.setItem(CURRENTCALTOTAL_KEY, "");
 }
 
-// Hides input box
 handleCaloriePrompt();
 function handleCaloriePrompt() {
   const savedMaxCal = localStorage.getItem(MAXCALORIE_KEY);
@@ -25,15 +24,10 @@ function onLimitSubmit(event) {
   const limit = calMaxInput.value;
   localStorage.setItem(MAXCALORIE_KEY, limit);
   paintsCalorieLimitBox();
+  handleCaloriePrompt();
 }
 
-function paintCalLimit() {
-  const maxCalElement = maxCalDiv.querySelector("div:last-child");
-  const savedMaxCal = localStorage.getItem(MAXCALORIE_KEY);
-  maxCalElement.innerText = savedMaxCal;
-}
-
-function setTotalCal() {
+function setSavedTotalCals() {
   const savedItems = JSON.parse(localStorage.getItem(CALORIECOUNTS_KEY));
   let totalCals = 0;
   for (i in savedItems) {
@@ -49,8 +43,26 @@ function paintCurrentTotalCal() {
   currentTotalElement.innerText = savedCurrCal;
 }
 
+function paintCalLimit() {
+  const maxCalElement = maxCalDiv.querySelector("div:last-child");
+  const savedMaxCal = localStorage.getItem(MAXCALORIE_KEY);
+  maxCalElement.innerText = savedMaxCal;
+  if (savedMaxCal !== "") {
+    const resetButton = document.createElement("button");
+    resetButton.innerText = "Reset";
+    resetButton.addEventListener("click", resetCalLimit);
+    maxCalElement.appendChild(resetButton);
+  }
+}
+
+function resetCalLimit() {
+  localStorage.setItem(MAXCALORIE_KEY, "");
+  paintsCalorieLimitBox();
+  handleCaloriePrompt();
+}
+
 function paintsCalorieLimitBox() {
-  setTotalCal();
+  setSavedTotalCals();
   const savedCurrCal = parseInt(localStorage.getItem(CURRENTCALTOTAL_KEY));
   const savedMaxCal = parseInt(localStorage.getItem(MAXCALORIE_KEY));
   const currentTotalElement = maxCalDiv.querySelector("div:first-child");
@@ -63,8 +75,8 @@ function paintsCalorieLimitBox() {
   if (savedCurrCal > savedMaxCal) {
     currentTotalElement.className = "over";
   }
-  paintCurrentTotalCal();
   paintCalLimit();
+  paintCurrentTotalCal();
 }
 
 paintsCalorieLimitBox();
