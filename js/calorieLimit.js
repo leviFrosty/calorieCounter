@@ -10,14 +10,13 @@ if (localStorage.getItem(CURRENTCALTOTAL_KEY) === null) {
   localStorage.setItem(CURRENTCALTOTAL_KEY, "");
 }
 
-handleCaloriePrompt();
 function handleCaloriePrompt() {
   const savedMaxCal = localStorage.getItem(MAXCALORIE_KEY);
   const caloriePromptContainer = document.getElementById(
     "desiredCalories-container"
   );
   caloriePromptContainer.className = "hidden";
-  if (savedMaxCal === "") {
+  if (savedMaxCal === "" || null) {
     caloriePromptContainer.className = "";
   }
 }
@@ -85,4 +84,5 @@ function paintsCalorieLimitBox() {
 }
 
 paintsCalorieLimitBox();
+handleInputContainer();
 calMaxForm.addEventListener("submit", onLimitSubmit);
